@@ -41,31 +41,5 @@ namespace EncompassRest.Tests
                 Assert.IsTrue(response.Active);
             }
         }
-
-#if NETCOREAPP3_0
-        [TestMethod]
-        [ApiTest]
-        public async Task AccessToken_RevokeOnDisposeAsync()
-        {
-            ClientParameters clientParameters = null;
-            var client = await GetTestClientAsync(cp => { clientParameters = cp; });
-            var accessToken = client.AccessToken;
-            var token = accessToken.Token;
-            if (token != "Token")
-            {
-                TokenIntrospectionResponse response;
-                await using (client)
-                {
-                    response = await accessToken.IntrospectAsync();
-                    Assert.IsTrue(response.Active);
-                }
-                using (await EncompassRestClient.CreateFromAccessTokenAsync(clientParameters, token))
-                {
-                    response = await accessToken.IntrospectAsync();
-                    Assert.IsNull(response);
-                }
-            }
-        }
-#endif
     }
 }

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Elli.Api.Loans.Model;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
@@ -15,7 +14,7 @@ using EnumsNET;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace EncompassRest
+namespace EncompassRest.EntityGenerator
 {
     public static class EntityGenerator
     {
